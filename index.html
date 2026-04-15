@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Store</title>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
 <style>
 body {margin:0;font-family:Arial;background:#e9e9ee;}
 
@@ -107,13 +105,8 @@ input {
 <div id="loginPage" class="center">
   <img src="WertxLogo.png" style="width:90px;margin-bottom:10px;">
   <h2>Login to access MegaHack</h2>
-
   <input id="login" placeholder="Login">
   <input id="password" type="password" placeholder="Password">
-
-  <!-- RECAPTCHA -->
-  <div class="g-recaptcha" data-sitekey="6LfK1rgsAAAAAEzUuknc2C46BKh37bj5dTkDup6R"></div>
-
   <button class="login-btn" onclick="checkLogin()">Enter</button>
   <p id="error" style="color:red"></p>
 </div>
@@ -169,16 +162,13 @@ It supports mobile and PC.
 </div>
 
 <script>
+window.onload = function(){
+  if(localStorage.getItem('logged') === 'true'){
+    showMain();
+  }
+}
 
 function checkLogin(){
-
-  const captcha = grecaptcha.getResponse();
-
-  if(captcha.length === 0){
-    document.getElementById('error').innerText = "Please verify reCAPTCHA";
-    return;
-  }
-
   const l=document.getElementById('login').value;
   const p=document.getElementById('password').value;
 
@@ -187,12 +177,6 @@ function checkLogin(){
     showMain();
   } else {
     document.getElementById('error').innerText='Wrong login or password';
-  }
-}
-
-window.onload = function(){
-  if(localStorage.getItem('logged') === 'true'){
-    showMain();
   }
 }
 
@@ -227,7 +211,6 @@ function toggleSupport(){
   const text=document.getElementById('supportText');
   text.style.display = text.style.display === 'none' ? 'block' : 'none';
 }
-
 </script>
 
 </body>
