@@ -1,5 +1,5 @@
 <?php
-$secret = "6LfK1rgsAAAAAJx85TRfcmsJur_-NGz2Yy9Nwek-";
+$secret = "6LfK1rgsAAAAAEzUuknc2C46BKh37bj5dTkDup6R";
 $response = $_POST["g-recaptcha-response"];
 
 $verify = file_get_contents(
